@@ -32,13 +32,13 @@ const helper = {
         return await res.json()
     },
 
-    html: async function(config = { url: '' }) {
-        config.url = config.url ? config.url : baseUrl;
-        let res = await fetch(config.url, { method: 'GET' });
-        if (!res.ok)
-            res = await fetch(baseUrl + 'propietarios/site_media/proximamente.html', { method: 'GET' });
+    // html: async function(config = { url: '' }) {
+    //     config.url = config.url ? config.url : baseUrl;
+    //     let res = await fetch(config.url, { method: 'GET' });
+    //     if (!res.ok)
+    //         res = await fetch(baseUrl + 'propietarios/site_media/proximamente.html', { method: 'GET' });
 
-        return await res.text()
-    }
+    //     return await res.text()
+    // }
 
 }

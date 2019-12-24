@@ -21,10 +21,10 @@ class Mysqlbase extends Env {
     public function __construct()
     {
         parent::__construct();
-        $this->server   = !empty($this->env->DB_HOST) ? $this->env->DB_HOST : '';
-        $this->user     = !empty($this->env->DB_USERNAME) ? $this->env->DB_USERNAME : '';
-        $this->password = !empty($this->env->DB_PASSWORD) ? $this->env->DB_PASSWORD : '';
-        $this->db       = !empty($this->env->DB_DATABASE) ? $this->env->DB_DATABASE : '';
+        $this->server   = $this->env->DB_HOST;
+        $this->user     = $this->env->DB_USERNAME;
+        $this->password = $this->env->DB_PASSWORD;
+        $this->db       = $this->env->DB_DATABASE;
         
         if( !empty($this->db)){
             try {
