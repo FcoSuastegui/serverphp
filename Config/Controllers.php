@@ -5,7 +5,7 @@ use Helpers\Log;
 use Helpers\Helpers;
 use Helpers\Correo;
 
-abstract class Controllers 
+abstract class Controllers extends Env
 {
     protected $helper;
     protected $session;
@@ -20,14 +20,16 @@ abstract class Controllers
 
     public function __construct()
     {
-        $this->conn     = new Mysqlbase();
-        $this->helper   = new Helpers();
+        parent::__construct();
+        $this->conn     = new Mysqlbase($this->env->DB_HOST,$this->env->DB_USERNAME,$this->env->DB_PASSWORD,$this->env->DB_DATABASE);
+        $this->helper   = new Helpers($this->conn);
         $this->session  = new Session();
-        $this->log      = new Log();
+        $this->log      = new Log($this->conn);
         $this->post     = new Post();
         $this->token    = new Token();
         $this->files    = new Files();
-        $this->correo   = new Correo();
+        $this->correo   = new Correo($this->env->MAIL_USERNAME, $this->env->MAIL_PASSWORD,$this->env->MAIL_HOST,$this->env->MAIL_PORT,
+                                     $this->env->MAIL_SMTPDEBUG,$this->env->MAIL_SMTPAUTH,$this->env->MAIL_SMTPSECURE,$this->env->MAIL_CHARSET);
     }
 
     public function __destruct()

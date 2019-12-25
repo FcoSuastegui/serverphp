@@ -2,7 +2,7 @@
 
 use Config\Controllers;
 
-class inicioController extends Controllers {
+class inicioControllers extends Controllers {
 
     public function __construct()
     {

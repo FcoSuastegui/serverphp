@@ -1,7 +1,6 @@
 <?php namespace Helpers;
 
 use Config\Session;
-use Db\Mysqlbase;
 
 class Log
 {
@@ -9,13 +8,13 @@ class Log
     private $helper;
     private $session;
 
-    public function __construct() {
-        $this->conn = new Mysqlbase();
+    public function __construct($conn) {
+        $this->conn = $conn;
         $this->session = new Session();
     }
     
     public function UserLog( $accion = 'x', $log = false ) {
-        $this->helper = new Helpers();
+        $this->helper = new Helpers($this->conn);
 
         $resultados = ['ok' => false];
         if ( isset($log) && $log != false ){

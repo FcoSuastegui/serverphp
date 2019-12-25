@@ -2,7 +2,7 @@
 
 class Env 
 {
-    public $env;
+    protected $env;
 
     public function __construct() {
         $archivo = ROOT . '.env';

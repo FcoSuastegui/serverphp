@@ -18,13 +18,13 @@ class Mysqlbase extends Env {
     
     private $conn;
 
-    public function __construct()
+    public function __construct($server, $user, $password, $db)
     {
-        parent::__construct();
-        $this->server   = $this->env->DB_HOST;
-        $this->user     = $this->env->DB_USERNAME;
-        $this->password = $this->env->DB_PASSWORD;
-        $this->db       = $this->env->DB_DATABASE;
+        
+        $this->server   = $server;
+        $this->user     = $user;
+        $this->password = $password;
+        $this->db       = $db;
         
         if( !empty($this->db)){
             try {

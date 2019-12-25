@@ -1,15 +1,13 @@
 <?php namespace Helpers;
 
-use Db\Mysqlbase;
-
 class Helpers {
 
     private $log;
     private $conn;
 
-    public function __construct()
+    public function __construct($conn)
     {
-        $this->conn = new Mysqlbase(); 
+        $this->conn = $conn; 
     }
     
     public function GetIP(){
@@ -51,7 +49,7 @@ class Helpers {
     }
 
     public function GuardarImagen($datos) {
-        $this->log = new Log();
+        $this->log = new Log($this->conn);
         $elemname = $datos['elemname'];
         if(empty($_FILES[$elemname])){  
             $resultados["status"] = false;
