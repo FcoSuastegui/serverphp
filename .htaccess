@@ -1,5 +1,10 @@
 RewriteEngine on
 
+<Files ~ "\.env$">
+Order allow,deny
+Deny from allow
+</Files>
+
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-l
 
