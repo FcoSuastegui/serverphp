@@ -3,7 +3,7 @@
 <html>
   <head>
     <meta http-equiv="Content-type" content="text/html; charset=utf-8">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'unsafe-inline'; img-src data:; connect-src 'self'">
+    <link rel="icon" href="<?= $baseUrl ?>assets/img/brand/favicon.png" type="image/png">
     <title>Página no encontrada</title>
     <style type="text/css" media="screen">
       body {

@@ -4,8 +4,10 @@ use Config\Session;
 
 class Router 
 {
+    private static $baseUrl;
     
     public static function run(Request $request) {
+        $baseUrl = Router::getServer() . 'Public/';
         $controller =  $request->getController() . "Controllers";
         $method     = $request->getMethod();
         $argument   = $request->getArgument();
@@ -67,5 +69,14 @@ class Router
             $error404 = ROOT . "Public/view/error404/error404.php";
             require($error404);
         }
+    }
+
+    public static function getServer() {
+        $server = isset($_SERVER['HTTPS']) ? "https://" : "http://";
+        if( $_SERVER["SERVER_NAME"] == "localhost")
+            $server .= $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'] . "/";
+        else
+            $server .= $_SERVER["SERVER_NAME"] . "/";
+        return $server;
     }
 }
